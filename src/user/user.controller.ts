@@ -1,7 +1,7 @@
 import { Controller, Get, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 
-@Controller('user')
+@Controller('/loginSSO')
 export class UserController {
   constructor(private userService: UserService) {}
   @Get()
@@ -9,11 +9,11 @@ export class UserController {
     return this.userService.getUser();
   }
   @Post()
-  addUser() {
+  loginSSO() {
     return {
-      code: 0,
+      success: true,
       data: [],
-      msg: 'success',
+      msg: '请求成功',
     };
   }
 }
