@@ -32,4 +32,9 @@ export class UserController {
       msg: '请求成功',
     };
   }
+  // 统计分析
+  @Get('user/statistics/col/rule')
+  statisticsColRule() {
+    return {};
+  }
 }

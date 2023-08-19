@@ -1,7 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 
 @Controller('activity')
 export class ActivityController {
+  @Post('create')
+  create() {
+    return {
+      success: true,
+    };
+  }
   @Get('list')
   // 获取活动列表
   getList() {
@@ -102,6 +108,18 @@ export class ActivityController {
           name: '平安人寿',
         },
       ],
+    };
+  }
+  @Get('detail')
+  detail() {
+    return {
+      success: true,
+    };
+  }
+  @Get('detail/comId')
+  detailComId() {
+    return {
+      success: true,
     };
   }
 }

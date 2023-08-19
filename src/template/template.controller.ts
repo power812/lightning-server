@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 
 @Controller('template')
 export class TemplateController {
@@ -39,11 +39,78 @@ export class TemplateController {
             content: '',
             name: '保险模版-自制活动',
             template_id: '',
-            cdn: 'https://gd-hbimg.huaban.com/cf46f456ce3bee6ce3661b5c26b0ddcd9ff7e71e330310-iAkMVa_fw658webp',
+            cdn: 'https://gd-hbimg.huaban.com/d00b5f852738689fbc5d80a4ac5ddae1ce142a4c59f2d-w9AbhQ_fw658webp',
             label: '',
           },
         ],
       },
     };
+  }
+  @Post('use')
+  use() {
+    return {
+      rule: undefined,
+      bean: {
+        records: [
+          {
+            produce_company_id: 33,
+            produce_activity_id: 334,
+            pv: 100,
+            uv: 42,
+            ip: '12.42.132.32',
+            registrationRate: 0.14,
+            email: '123@qq.com',
+            create_time: new Date().getTime(),
+            note: 'remark',
+          },
+        ],
+      },
+    };
+  }
+  @Get('history')
+  getHistory() {
+    return {
+      rule: undefined,
+      bean: {
+        records: [
+          {
+            email: '123@qq.com',
+            note: '这是备注',
+            create_time: new Date().getTime(),
+            config: {
+              name: 'test',
+            },
+          },
+          {
+            email: 'power@qq.com',
+            note: '这是备注2',
+            create_time: new Date().getTime(),
+            config: {
+              name: 'test',
+            },
+          },
+        ],
+      },
+    };
+  }
+  @Get('getLabel')
+  getLabel() {
+    return {};
+  }
+  @Get('label/classify/list')
+  getClassifyList() {
+    return {
+      bean: [
+        {
+          email: '123@qq.com',
+          note: '备注',
+          create_time: new Date().getTime(),
+        },
+      ],
+    };
+  }
+  @Get('render')
+  render() {
+    return { tip: '这里使用iframe来渲染活动页面,应该是ssr渲染,暂时先不处理' };
   }
 }
