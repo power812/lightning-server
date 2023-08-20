@@ -5,7 +5,22 @@ export class StatisticsController {
   @Post('report/test/version/list')
   testVersionList() {
     return {
-      bean: [{ visitRate: '0.1', testStatus: 1 }],
+      bean: [
+        {
+          visitRate: '0.1',
+          testStatus: 1,
+          version: 23,
+          pv: 10,
+          uv: 5,
+          ip: 3,
+          registration: 1000,
+          registrationRate: 0.08,
+          conversionRate: 0.3,
+          versionName: '测试活动',
+          versionId: 1,
+          // avgDuration: 343,
+        },
+      ],
     };
   }
 
@@ -21,26 +36,6 @@ export class StatisticsController {
             testId: 32,
             activityid_or_name: 345,
             testName: '测试活动',
-            creatTime: new Date().getTime(),
-            updateTime: new Date().getTime(),
-            startTime: new Date().getTime(),
-            endTime: new Date().getTime(),
-            status: 1,
-            testStatus: 1,
-            name: '新年大礼包聚合页',
-            company: '泰康人寿',
-            template: '通用模板',
-            effective_time: new Date().getTime(),
-            produce_company_id: '33',
-            produce_activity_id: '23',
-          },
-          {
-            produce_id: 1,
-            company_id: 33,
-            comId: 12,
-            testId: 32,
-            activityid_or_name: 345,
-            testName: '测试活动34',
             creatTime: new Date().getTime(),
             updateTime: new Date().getTime(),
             startTime: new Date().getTime(),
@@ -204,5 +199,95 @@ export class StatisticsController {
     return {
       bean: arr,
     };
+  }
+  @Post('report/visit/overview')
+  visitOverview() {
+    return {
+      bean: {
+        today: {
+          pv: 1545,
+          uv: 123,
+          ip: 34,
+          registration: 32,
+          registrationRate: 0.23,
+          avgDuration: 12323535,
+          conversionRate: 0.08,
+          bounceRate: 0.1,
+        },
+        yesterday: {
+          pv: 12245,
+          uv: 6544,
+          ip: 334,
+          registration: 52,
+          registrationRate: 0.11,
+          avgDuration: 12313442,
+          conversionRate: 0.07,
+          bounceRate: 0.15,
+        },
+      },
+    };
+  }
+  @Post('report/visit/list')
+  visitList() {
+    const beanArr = [];
+    for (let i = 0; i < 24; i++) {
+      let item = {
+        dayId: new Date(),
+        hour: i,
+        pv: Math.floor(Math.random() * 100),
+        uv: Math.floor(Math.random() * 100),
+        ip: Math.floor(Math.random() * 100),
+        registrationRate: Math.random(),
+      };
+      beanArr.push(item);
+      item = {
+        dayId: new Date(),
+        hour: i,
+        pv: Math.floor(Math.random() * 100),
+        uv: Math.floor(Math.random() * 100),
+        ip: Math.floor(Math.random() * 100),
+        registrationRate: Math.random(),
+      };
+      beanArr.push(item);
+    }
+    return {
+      bean: beanArr,
+      beantest: [
+        {
+          hour: 1,
+          pv: 140,
+          uv: 10,
+          ip: '89.0.142.86',
+        },
+        {
+          hour: 1,
+          pv: 10,
+          uv: 158,
+          ip: '89.0.142.86',
+        },
+        {
+          hour: 2,
+          pv: 100,
+          uv: 10,
+          ip: '89.0.142.86',
+        },
+        {
+          hour: 2,
+          pv: 1020,
+          uv: 15,
+          ip: '89.0.142.86',
+        },
+      ],
+    };
+  }
+  @Post('report/heatmap/list')
+  heatmapList() {
+    return {
+      bean: [],
+    };
+  }
+  @Post('site/test/list')
+  testList() {
+    return { bean: [] };
   }
 }

@@ -27,6 +27,7 @@ export class ActivityController {
             produce_company_id: 33,
             produce_activity_id: 1,
             test_id: 10,
+            statistics_id: 22,
             description: '描述',
             label: [{ name: '标签1' }, { name: '标签2' }],
             status: '1',
@@ -119,7 +120,9 @@ export class ActivityController {
   @Get('detail/comId')
   detailComId() {
     return {
-      success: true,
+      bean: {
+        name: 'hello',
+      },
     };
   }
 }
